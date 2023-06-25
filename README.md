@@ -1,3 +1,2 @@
 # HTML_Web
-HTML Web Realization
-Make Pizza Worm Game
+Created the Pizza Worm Game using the HTML WEB implementation.
