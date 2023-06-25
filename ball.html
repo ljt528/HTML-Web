@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ball</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas id="canvas" width="500" height="500"></canvas>
+
+    <script>
+        const canvas = document.querySelector('#canvas');
+        const ctx = canvas.getContext('2d');
+
+        class Ball {
+            constructor(xPos, yPos, xSpeed, ySpeed) {
+                this.xPos = xPos;
+                this.yPos = yPos;
+                this.xSpeed = xSpeed;
+                this.ySpeed = ySpeed;
+            }
+
+            // 공 그리기
+            drawBall() {
+                ctx.beginPath();
+                ctx.arc(this.xPos, this.yPos, 30, 0, Math.PI * 2);
+                ctx.fillStyle = 'teal';
+                ctx.fill();
+            }
+
+            // 공 움직이기
+            moveBall() {
+                this.xPos += this.xSpeed;
+                this.yPos += this.ySpeed;
+            }
+
+            // 공의 충돌 여부를 확인하는 함수
+            collisionBall() {
+                if(this.xPos - 30 < 0 || this.xPos + 30 > 500) {
+                    this.xSpeed = -this.xSpeed;
+                }
+                if(this.yPos - 30 < 0 || this.yPos + 30 > 500) {
+                    this.ySpeed = -this.ySpeed;
+                }
+            }
+
+        }
+
+
+        const ball = new Ball(250, 250, 2, -3);
+        const ball2 = new Ball(300, 150, 1, -4);
+
+
+        // 표현식 (expression)
+        const play = () => {
+            ctx.clearRect(0, 0, 500, 500);
+            ball.drawBall();
+            ball.moveBall();
+            ball.collisionBall();
+            ball2.drawBall();
+            ball2.moveBall();
+            ball2.collisionBall();
+
+            requestAnimationFrame(play);
+        }
+
+        requestAnimationFrame(play);
+    </script>
+</body>
+
+
+</html>

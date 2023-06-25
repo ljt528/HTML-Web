@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ani</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+
+        div {
+            width: 50px;
+            height: 50px;
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <canvas id="canvas" width="500" height="500"></canvas>
+    
+    <script>
+        const canvas = document.querySelector('#canvas');
+        const ctx = canvas.getContext('2d');
+
+
+        // 실행식보다 선언식이 뒤에 있으면 실행되지 않는 것이 정상이지만 호이스팅(끌어올림)을 통해 정상적으로 실행됨
+        
+
+        // 선언식
+        // function play(){
+        //     console.log('play');
+        // }
+
+
+        // 표현식(expression) -> 화살표함수를 function 대신 사용 가능
+        // 표현식으로 호이스팅을 막을 수 있음
+        // 보통 프론트엔드 개발자들은 표현식을 많이 사용함!
+        
+        // const play = function (){
+
+        // }
+
+
+        let xPos = 0;
+
+        const play = () => {
+            ctx.clearRect(0, 0, 500, 500);
+            ctx.fillRect(xPos, 0, 50, 50);
+
+            xPos += 1;
+
+            if(xPos > 500) {
+                xPos = 0;
+            }
+
+            requestAnimationFrame(play);
+        }
+
+        requestAnimationFrame(play); // 재귀함수이기 때문에 따로 실행시키지 않아도 자동으로 실행됨
+    </script>
+
+</body>
+
+</html>

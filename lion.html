@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LION만들기</title>
+    <style>
+        canvas{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="500" height="500"></canvas>
+    
+    <script>
+        const canvas = document.querySelector('#canvas');
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = "#000";
+
+        
+        // L 그리기
+        // x축, y축, 사각형의 너비, 높이
+        ctx.fillRect(0, 0, 30, 100);
+        ctx.fillRect(0, 100, 100, 30);
+
+
+        // I 그리기
+        ctx.fillRect(140, 0, 30, 130);
+
+
+        // O 그리기
+        ctx.beginPath();
+        ctx.lineWidth = 30; // 원의 두께
+        ctx.strokeStyle = "#000";
+        ctx.arc(270, 65, 50, 0, Math.PI * 2); // 원의 중심 X축, Y축, 원의 반지름 길이, 시작각도, 종료각도
+        ctx.stroke(); // 선스타일로 원그리기
+
+
+        // N 그리기
+        ctx.fillRect(370, 0, 30, 130);
+        ctx.fillRect(450, 0, 30, 130);
+        ctx.beginPath();
+        ctx.strokeStyle = "#000";
+        ctx.lineWidth = 30; // 선의 두께
+        ctx.moveTo(383, 0); // 시작점 지정
+        ctx.lineTo(462, 122); // 끝 점 지정
+        ctx.stroke(); // 화면에 선을 그리겠다!
+
+    </script>
+</body>
+</html>

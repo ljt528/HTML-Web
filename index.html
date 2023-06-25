@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="500" height="500"></canvas>
+    
+    <script>
+        const canvas = document.querySelector('#canvas');
+
+        // 그림을 그리는데 필요한 모든 메소드를 제공하는 객체를 반환합니다.
+        // 3D를 원하면 webgl(웹 기반의 그래픽 라이브러리)
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = "#000"; // 뒤에 오는 객체들도 모두 색의 영향을 받음
+
+
+        // 네모 그리기
+        // x축, y축, 사각형의 너비, 높이
+        ctx.fillRect(0, 0, 30, 30);
+        // ctx.fillRect(100, 100, 30, 30);
+
+        
+        // 직선 그리기
+        // 새로운 선을 그릴것임을 알립니다.
+        ctx.beginPath();
+        ctx.strokeStyle = "green";
+        ctx.lineWidth = 10;
+        ctx.moveTo(0, 0); // 시작점 지정
+        ctx.lineTo(500, 500); // 끝 점 지정
+        ctx.stroke(); // 화면에 선을 그리겠다!
+
+
+        // 원 그리기
+        ctx.beginPath();
+        // ctx.strokeStyle = 'pink'; // 형태
+        ctx.lineWidth = 10; // 원의 두께
+        // 원의 중심 X축, Y축, 원의 반지름 길이, 시작각도, 종료각도
+        // 각도는 라디안(Radian)이 기준임!!  0~360도 그 각도(Degree)가 아님!
+        // + 기본값은 시계방향임!!
+        ctx.arc(100, 200, 50, 0, 3.14 * 2);
+        // ctx.stroke(); // 선스타일로 원그리기
+        ctx.fillStyle = 'pink'
+        ctx.fill(); // 안이 꽉 찬 원으로 그리기
+
+    </script>
+</body>
+</html>
